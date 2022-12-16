@@ -27,7 +27,6 @@ for word in tokenize_words: # Finds keywords to append in list
             word_ID += 1
 
 print(keyword_dictionary)
-print()
 
 
 
