@@ -33,6 +33,6 @@ def json_parser(path, flag=False): # Flag false returns lexicon else Forward Ind
 
     df["content"] = df["content"].apply(temp_parse)
     if flag:
-        print(df.set_index("id")[["content"]])
+        # print(df.set_index("id")[["content"]])
         return df.set_index('id')['content'].to_dict()
     return list(set(itertools.chain.from_iterable(df["content"].tolist())))

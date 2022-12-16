@@ -24,8 +24,9 @@ def merge_dict(merge_list):
 
 
 if __name__ == '__main__':
-    path = '.\\Dataset\\temp_testing\\'
+    path = '.\\temp_testing\\'
     x1 = datetime.datetime.now()
-    open('.\\Dataset\\Output_test\\output_test.json', 'w', encoding='utf-8'). \
-        write(str(merge_dict(create_inverted_index())))
+    # open('.\\Dataset\\Output_test\\output_test.json', 'w', encoding='utf-8'). \
+    #     write(str(merge_dict(create_inverted_index())))
+    merge_dict(create_inverted_index())
     print(f"Time taken: {datetime.datetime.now() - x1}")
