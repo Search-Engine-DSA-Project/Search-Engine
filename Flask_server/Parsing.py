@@ -17,7 +17,7 @@ from nltk.stem import PorterStemmer
 import itertools
 
 
-def json_parser(path, flag=False):
+def json_parser(path, flag=False): # Flag false returns lexicon else Forward Index
     punctuations = RegexpTokenizer(r'\w+')
     open_file = open(path, 'r')
     file_data = open_file.read()
