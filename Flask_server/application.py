@@ -2,41 +2,6 @@ import datetime
 import os
 from Inverted_Indexing import inverted_index
 
-########################################################################################################################
-
-# punctuations = RegexpTokenizer(r'\w+')
-# stop_words = stopwords.words('english')
-#
-#
-# def json_parser(path):
-#     def temp_parse(x):
-#         x = punctuations.tokenize(x)
-#         x = [PorterStemmer().stem(word) for word in x if word.lower() not in stop_words]
-#         return x
-#
-#     open_file = open(path, 'r')
-#     file_data = open_file.read()
-#     df = pds.DataFrame(json.loads(file_data))
-#
-#     df['content'] = df['content'].apply(temp_parse)
-#
-#     return [df.set_index('id')['content'].to_dict(), np.unique(np.concatenate(df['content'].values))]
-#
-#
-# def inverted_index(path):
-#     lexicon_forward_index = json_parser(path)
-#     inverted_indexing = {i: {} for i in lexicon_forward_index[1]}
-#     for doc_id, tokens in lexicon_forward_index[0].items():
-#         for token in tokens:
-#             if doc_id in inverted_indexing[token]:
-#                 inverted_indexing[token][doc_id] += 1
-#                 continue
-#             inverted_indexing[token][doc_id] = 1
-#     return inverted_indexing
-#
-
-########################################################################################################################
-
 
 def create_inverted_index():
     # dataset = os.listdir(path)

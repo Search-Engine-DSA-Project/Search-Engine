@@ -1,10 +1,3 @@
-# TODO: Creating Inverted Indexing:
-#   1. Create a function inverted indexing (Done)
-#   2. Inverted Indexing details:
-#       a. Importing Lexicon and Forward_Indexing (Done)
-#       b. Using Lexicon to identify the unique words (Done)
-#       c. Using Forward_Indexing to map documents according to those unique words (Done)
-
 from Parsing import json_parser
 
 
