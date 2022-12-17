@@ -4,8 +4,3 @@
 #       a. import the json_parser function from Parsing.py (Done)
 #       b. Create a list of all the tokens yielded from the json_parser function (Done)
 
-from Parsing import json_parser
-
-
-def create_lexicon(path):
-    return json_parser(path)

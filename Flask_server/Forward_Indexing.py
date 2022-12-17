@@ -7,8 +7,3 @@
 #       d. Return the dictionary
 
 
-from Parsing import json_parser
-
-
-def forward_index(path):
-    return json_parser(path, flag=True)

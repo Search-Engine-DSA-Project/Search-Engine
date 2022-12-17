@@ -10,29 +10,26 @@
 #       g. Return the tokens (Done)
 
 import json
+import numpy as np
 import pandas as pds
-from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 from nltk.stem import PorterStemmer
-import itertools
+from nltk.corpus import stopwords
+
+punctuations = RegexpTokenizer(r'\w+')
+stop_words = stopwords.words('english')
 
 
-def json_parser(path, flag=False): # Flag false returns lexicon else Forward Index
-    punctuations = RegexpTokenizer(r'\w+')
+def json_parser(path):
+    def temp_parse(x):
+        x = punctuations.tokenize(x)
+        x = [PorterStemmer().stem(word) for word in x if word.lower() not in stop_words]
+        return x
+
     open_file = open(path, 'r')
     file_data = open_file.read()
     df = pds.DataFrame(json.loads(file_data))
-    open_file.close()
 
-    def temp_parse(x):
-        stop_words = stopwords.words('english')
-        x = punctuations.tokenize(x)
-        x = [PorterStemmer().stem(i) for i in x]
-        x = [word for word in x if word not in stop_words]
-        return x
+    df['content'] = df['content'].apply(temp_parse)
 
-    df["content"] = df["content"].apply(temp_parse)
-    if flag:
-        # print(df.set_index("id")[["content"]])
-        return df.set_index('id')['content'].to_dict()
-    return list(set(itertools.chain.from_iterable(df["content"].tolist())))
+    return [np.unique(np.concatenate(df['content'].values)), df.set_index('id')['content'].to_dict()]
