@@ -24,6 +24,7 @@ def inverted_index(path2):
                 inverted_indexing[token][doc_id] += 1
             else:
                 inverted_indexing[token][doc_id] = 1
+    print("at inverted indexing")
     return inverted_indexing
 
 
