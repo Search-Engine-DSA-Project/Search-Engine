@@ -5,9 +5,7 @@ This project has been made as part of the coursework required for CS 250 Data St
 
 
 * Taha Mukhtar
-
 * Shalina Riaz
-
 * Muhammad Hassan Bin Adeel
 
 ## Project Goals 🥅
@@ -37,14 +35,40 @@ The Project has been extended over various parts as below:
 
 ## Table of Contents 📃
 * [DataSet](#Dataset)
+* [Libraries and Frameworks](#Libraries-and-Frameworks)
+* [Set Me Up](#Set-Me-Up)
 * [Implementation](#Implementation)
 * [Authors](#Authors)
 * [FeedBack](#FeedBack)
 ## Dataset
 As described in our project proposal we are using around 150,000 articles from the dataset in HAVARD DATAVERSE named "NELA-GT-2021". It is a Large Multi-Labelled News Dataset for the Study of Misinformation in News Articles".
+## Libraries and Frameworks
+The following Libraries have been used in the development of this project:
+
+* json
+* nltk
+* pandas
+* numba
+* re
+* os
+* datetime
+* collections
+
+Frameworks used are:
+
+* Flask Python
+
+## Set Me Up
+To run the project clone the repository and install the libraries. For installing open VS code or any code editor you use and write the following commands in terminal one by one.
+
+* pip install nltk
+* pip install pandas
+* pip install numba
+
+The json, re, os, datetime and collections are built-in libraries and modules in python so you don't need to install them.
 ## Implementation
 
-* **Parsing**
+* **Parsing And Forward Indexing**
 
     The json files in dataset are read and tokenized. And then stopwords (i.e, words like 'a','and','the','but' etc) are removed using following libraries.
     * json
@@ -53,10 +77,17 @@ As described in our project proposal we are using around 150,000 articles from t
     
     Now, we have a list of words from the documents. But for efficient search stemming is applied. As recognizing, searching and retrieving more forms of words for  more results. When a form of a word is recognized, it's possible to return search results that otherwise might have been missed. That additional information retrieved so stemming is integral to search queries and information retrieval. 
 
-    Finally, a list of keywords is formed for searching the articles.
-* **Forward Indexing**
-
+    Finally, the function *json_parser* returns document dictionary having forward Indexing for searching the articles.
+    The format for forward index is: 
+    
+    **Doc_id : [words with repetitions to calculate no. of hits]**
+    
+    *Time Complexity* for json parser is **nln(n)**.
 * **Inverted Indexing**
+
+    In inverted index we have unique words from all the documents mapped to document id which is mapped to no. of hits. So the overall *time complexity* for inverted index is **(ln(n))^2**.
+
+    **Note:** If better methods are found during the completion of project the code may be changed to perform more efiiciently. 
 ## Authors
 
 - [Shalina Riaz](https://github.com/shalinaariaaz)
