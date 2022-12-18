@@ -1,5 +1,5 @@
 
-# About the Project
+# ❓About the Project
 
 This project has been made as part of the coursework required for CS 250 Data Structures and Alogrithms. The group members include: 
 
@@ -10,7 +10,7 @@ This project has been made as part of the coursework required for CS 250 Data St
 
 * Muhammad Hassan Bin Adeel
 
-## Project Goals 
+## Project Goals 🥅
 
 The main goal of this project is to develop a scalable and good performance search engine. The main challenges are algorithmic; in compactly representing a large data-set while supporting fast searches on it. 
 
@@ -35,7 +35,7 @@ The Project has been extended over various parts as below:
 
 
 
-## Table of Contents
+## Table of Contents 📃
 * [DataSet](#Dataset)
 * [Implementation](#Implementation)
 * [Authors](#Authors)
