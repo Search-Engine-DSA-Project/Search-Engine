@@ -87,7 +87,7 @@ The json, re, os, datetime and collections are built-in libraries and modules in
 
     In inverted index we have unique words from all the documents mapped to document id which is mapped to no. of hits. So the overall *time complexity* for inverted index is **(ln(n))^2**.
 
-    **Note:** If better methods are found during the completion of project the code may be changed to perform more efiiciently. 
+    **Note:** If better methods are found during the advancement of project the code may be changed to perform more efiiciently. 
 ## Authors
 
 - [Shalina Riaz](https://github.com/shalinaariaaz)
