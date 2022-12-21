@@ -1,4 +1,3 @@
-
 # ❓About the Project
 
 This project has been made as part of the coursework required for CS 250 Data Structures and Alogrithms. The group members include: 
