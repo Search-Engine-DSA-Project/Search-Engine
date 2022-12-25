@@ -98,6 +98,12 @@ def single_word_search():
 
 
 def multi_word_search():
+    open_file = open("output_test1.json", 'r')
+    file_data = open_file.read()
+    file1_data = json.loads(file_data)
+    data = input("Enter Here: ")
+    data = temp_parse(data)
+    [print(file1_data[x]) for x in data]
     pass
 
 
