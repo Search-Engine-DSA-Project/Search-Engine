@@ -1,3 +1,5 @@
+# Cython files are compiled to C files not to be looked at now, are under testing
+
 from Parsing import json_parser
 
 

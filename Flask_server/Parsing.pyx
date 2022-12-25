@@ -1,3 +1,6 @@
+# Cython files are compiled to C files not to be looked at now, are under testing
+
+
 # def json_parser(path):
 #     def temp_parse(x):
 #         x = punctuations.tokenize(x)
