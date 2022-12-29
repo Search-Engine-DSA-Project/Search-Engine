@@ -79,8 +79,8 @@ def create_inverted_index(path3):
 
 def articles_count(path3):
     with ProcessPoolExecutor() as executor:
-        _templist_ = list(executor.map(read_file, (path3 + x for x in os.listdir(path))))
-        _noofdocs = sum(templist_)
+        __templist_ = list(executor.map(read_file, (path3 + x for x in os.listdir(path))))
+        _noof_docs = sum(__templist_)
     print("Total Number of Documents: ", _noof_docs)
     return _noof_docs
 
@@ -91,7 +91,7 @@ def read_file(path):
     return no_of_docs
 
 
-def _idf_index(doc_dict, no_of_docs):
+def __idf__index(doc_dict, no_of_docs):
     temp_ = no_of_docs / (len(doc_dict) + 1)
     temp1 = math.log(temp_)
     for key_, value_ in doc_dict.items():
@@ -100,7 +100,7 @@ def _idf_index(doc_dict, no_of_docs):
     return doc_dict
 
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     path = ".\\minidataset\\"
     x1 = datetime.datetime.now()
     index = create_inverted_index(path)
