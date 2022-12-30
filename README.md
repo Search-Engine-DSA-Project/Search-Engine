@@ -51,7 +51,9 @@ The following Libraries have been used in the development of this project:
 * re
 * os
 * datetime
-* collections
+* HTML,CSS
+* JS
+* FLask Server
 
 Frameworks used are:
 
@@ -65,8 +67,12 @@ To run the project clone the repository and install the libraries. For installin
 * pip install numba
 
 The json, re, os, datetime and collections are built-in libraries and modules in python so you don't need to install them.
-## Implementation
 
+## Implementation
+* **TF-IDF Algorithm**
+    TF short for Term Frequency and IDF short for Inverted Document Frequency algorithm is used to rank/sort the page and calculate the score based on number of occurances of word in every document and number of documents which contain the word. The algorithm efficiently sorts the pages and only show relevant pages. The mathematical formula used is below:-
+
+    ![Formula Image](tf-idf.jpeg)
 * **Parsing And Forward Indexing**
 
     The json files in dataset are read and tokenized. And then stopwords (i.e, words like 'a','and','the','but' etc) are removed using following libraries.
@@ -79,14 +85,21 @@ The json, re, os, datetime and collections are built-in libraries and modules in
     Finally, the function *json_parser* returns document dictionary having forward Indexing for searching the articles.
     The format for forward index is: 
     
-    **Doc_id : [words with repetitions to calculate no. of hits]**
+    **{Doc_id : {word : TF}}**
     
     *Time Complexity* for json parser is **nln(n)**.
-* **Inverted Indexing**
+* **Merged Inverted Indexing**
 
-    In inverted index we have unique words from all the documents mapped to document id which is mapped to no. of hits. So the overall *time complexity* for inverted index is **(ln(n))^2**.
+    In inverted index we have unique words from all the documents mapped to document id which is mapped to TF-IDF which helps in page ranking algorithm. So the overall *time complexity* for inverted index is **(ln(n))^2**.
+    The format for inverted index is:
+    **{word : {docID : TF-IDF}}**
 
     **Note:** If better methods are found during the advancement of project the code may be changed to perform more efiiciently. 
+* **One Word Search**
+
+    Our one word search simply O(1) as it checks in hash table (dictionary) whose search time if key is given is O(1). All relevant one word search docs that appear are made relevant by using TF-IDF rank algorithm
+
+* **Multu Word Search**    
 ## Authors
 
 - [Shalina Riaz](https://github.com/shalinaariaaz)
