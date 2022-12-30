@@ -99,7 +99,9 @@ The json, re, os, datetime and collections are built-in libraries and modules in
 
     Our one word search simply O(1) as it checks in hash table (dictionary) whose search time if key is given is O(1). All relevant one word search docs that appear are made relevant by using TF-IDF rank algorithm
 
-* **Multu Word Search**    
+* **Multi Word Search**    
+
+    Multiword search is O(n) as there is comparison of docIDs for calculation of score due to multiple words. HIghest priority page is the one containing all of words in search query and then further TF-IDF algorithm is also applied to make the search more relevant and sorted.
 ## Authors
 
 - [Shalina Riaz](https://github.com/shalinaariaaz)
