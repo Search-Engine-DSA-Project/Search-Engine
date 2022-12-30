@@ -24,6 +24,9 @@ def searching_page():
 
 @app.route("/searching", methods=['POST'])
 def search():
+    global merged_inverted_index
+    temp = merged_inverted_index
+    merged_inverted_index = merged_inverted_index[1]
     query = temp_parse(request.form['query'])
     query = list(set(query))
     print(query)
@@ -46,6 +49,7 @@ def search():
     print(len(query))
     query = dict(itertools.islice(query.items(), 0, 10))
     query = list(query.keys())
+    merged_inverted_index = temp
     return render_template("Search-Page.html", search_results=query)
 
 
@@ -58,9 +62,6 @@ def inverted_creation():
     file_data = open_file.read()
     merged_inverted_index = json.loads(file_data)
     print("Inverted Indexing Preloaded")
-    global no_of_articles
-    no_of_articles = merged_inverted_index[0]
-    merged_inverted_index = merged_inverted_index[1]
     return redirect(url_for('index'))
 
 
@@ -69,12 +70,17 @@ def inverse__idf__index(doc_dict, no_of_docs):
     for key, value in doc_dict.items():
         for key_, value_ in value.items():
             value[key_] = value_ / math.log(no_of_docs / temp_)
+            print(value[key_])
     return doc_dict
 
 
 @app.route("/DynamicContentAddition", methods=["POST"])
 def dynamic_content_addition():
-    global merged_inverted_index, no_of_articles
+    global merged_inverted_index
+    no_of_articles = merged_inverted_index[0]
+    merged_inverted_index = merged_inverted_index[1]
+    print("Dynamic Content Addition Started")
+    merged_inverted_index = inverse__idf__index(merged_inverted_index, no_of_articles)
     print("here")
     print(request)
     print("still here")
@@ -96,14 +102,12 @@ def dynamic_content_addition():
             if token not in merged_index:
                 merged_index[token] = {}
             merged_index[token].update(docs_)
+    print(merged_index)
     for key, value in merged_index.items():
         merged_index[key] = __idf__index(value, no_of_articles)
-    merged_inverted_index = merged_index
-    merged_inverted_index = (no_of_articles, merged_inverted_index)
+    merged_inverted_index = (no_of_articles, merged_index)
     with open('.\\output_test.json', 'w', encoding='utf-8') as fx:
         json.dump(merged_inverted_index, fx)
-    no_of_articles = merged_inverted_index[0]
-    merged_inverted_index = merged_inverted_index[1]
     print("Done Writing")
     return redirect(url_for('index'))
 

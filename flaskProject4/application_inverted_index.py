@@ -55,8 +55,8 @@ def inverted_index(path2):
     for unique_token in unique_tokens:
         inverted_indexing[unique_token] = {}
     for doc_id, tokens in doc_dict.items():
-        for word, pos_list in tokens.items():
-            inverted_indexing[word][doc_id] = pos_list
+        for word, tf_score in tokens.items():
+            inverted_indexing[word][doc_id] = tf_score
     return inverted_indexing
 
 def create_inverted_index(path3):
@@ -80,7 +80,7 @@ def create_inverted_index(path3):
 def articles_count(path3):
     with ProcessPoolExecutor() as executor:
         __templist_ = list(executor.map(read_file, (path3 + x for x in os.listdir(path))))
-        _noof_docs = sum(__templist_)
+    _noof_docs = sum(__templist_)
     print("Total Number of Documents: ", _noof_docs)
     return _noof_docs
 
@@ -93,6 +93,7 @@ def read_file(path):
 
 def __idf__index(doc_dict, no_of_docs):
     temp_ = no_of_docs / (len(doc_dict) + 1)
+    print(temp_)
     temp1 = math.log(temp_)
     for key_, value_ in doc_dict.items():
         doc_dict[key_] = value_ * temp1
@@ -106,7 +107,7 @@ if __name__ == '__main__':
     index = create_inverted_index(path)
     no_of_articles = articles_count(path)
     for key, value in index.items():
-        index[key] = _idf_index(value, no_of_articles)
+        index[key] = __idf__index(value, no_of_articles)
     final_index = (no_of_articles, index)
     print("Inverted Indexing Done")
     with open('.\\output_test.json', 'w', encoding='utf-8') as fx:
