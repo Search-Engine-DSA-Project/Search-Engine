@@ -93,8 +93,7 @@ The json, re, os, datetime and collections are built-in libraries and modules in
     In inverted index we have unique words from all the documents mapped to document id which is mapped to TF-IDF which helps in page ranking algorithm. So the overall *time complexity* for inverted index is **(ln(n))^2**.
     The format for inverted index is:
     **{word : {docID : TF-IDF}}**
-
-    **Note:** If better methods are found during the advancement of project the code may be changed to perform more efiiciently. 
+ 
 * **One Word Search**
 
     Our one word search simply O(1) as it checks in hash table (dictionary) whose search time if key is given is O(1). All relevant one word search docs that appear are made relevant by using TF-IDF rank algorithm
